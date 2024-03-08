@@ -19,6 +19,11 @@ labs = {
 #excel file form google sheets
 excel_file = 'test_labs.xlsx'
 
+#set the coloumn letter of each from the excel file
+excel_lab = 'D'
+excel_name = 'C'
+excel_email = 'B'
+
 #loading excel sheet
 book = load_workbook(excel_file)
 sheet = book.active
@@ -63,17 +68,17 @@ class User:
         except:
             print('\nEmail Failed to Send')
         
-sheet['D1'].value = 'Labs'
+sheet[excel_lab+str(1)].value = 'Labs'
 
 for i in range(2, sheet.max_row+1):
-    person = User(sheet['C'+str(i)].value, sheet['B'+str(i)].value)
+    person = User(sheet[excel_name+str(i)].value, sheet[excel_email+str(i)].value)
     if (len(labs) == 0):
         print('labs are full, ',sheet['C'+str(i)].value,'is not allocated')
     else :
         for j in labs:
             if (labs[j] > 0):
                 person.set_lab(j)
-                sheet['D'+str(lab_index)].value = j
+                sheet[excel_lab+str(lab_index)].value = j
                 lab_index += 1
                 labs[j] -= 1
                 count += 1
