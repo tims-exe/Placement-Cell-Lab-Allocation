@@ -32,7 +32,10 @@ sheet = book.active
 #change email and password
 count = 0
 lab_index = 2
+
+#senders email
 sender = 'dummy@gmail.com'
+#gmail app password (16 letters)
 password = 'dummy passord'
 
 
